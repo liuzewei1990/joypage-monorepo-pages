@@ -1,0 +1,112 @@
+
+项目前端架构:monorepo架构（components、parse、sdk） + 微项目(底座、编辑器、其他)
+npm包：parse解析器、sdk、组件库
+项目:编辑器、底座 这两个项目依赖以上 (parse解析器 -> 组件库) 和 (sdk外链)
+
+组件库：
+【开发环境】 搭建stortybook环境开发组件库
+【基础组件】 基于arco design 二次封装 支持单独暴露接口引入
+【常用业务组件】 基于sdk和基础组件的业务封装
+【外部组件集成】 调用后台接口获取json配置信息
+【支持独立打包、异步加载组件】
+
+
+parse解析器包:
+【Work组件】 用来解析json schema配置渲染组件信息到一个完整的页面，底座使用、编辑器预览使用
+
+
+sdk包的功能点：
+【axios封装】
+【websoket封装】
+【数据库表的实体对象】 基于 axios
+【数据二次加工】 比如：echars数据模型
+【event bus】
+【第三方引入支持】
+
+
+编辑器功能点: 依赖：sdk、parse解析器
+【页面管理（分组表格）】 
+【元件管理（组件分组、组件注册功能）】 
+【数据管理（分组表格）】 
+【模板管理（分组表格）】 
+【编辑器（编辑面板、组件调用、组件配置）】用来生成json schema
+【preview预览】 依赖parse解析器的包
+
+
+底座项目功能点: 依赖：sdk、parse解析器
+【支持夜间模式、国际化】可选
+【支持tabs页签】
+【支持menu布局可配】可选
+【支持可配navbar显示隐藏】
+【支持menuList菜单权限获取渲染menu组件】
+【支持keep-alive的动态路由缓存：addRoutes、matcher】 尝试实现：push重建页面，back缓存页面
+【支持组件库预加载】
+【通过解析器来解析JSON Schema配置，渲染页面布局和Components】 依赖parse解析器的包。 Components分类：1.【vue组件】 2.【web components】 3.【微前端】
+【支持数据通讯：event bus】
+【支持多tab view渲染】
+
+
+
+编辑器原理：
+    
+    组件库:将所有组件定义到全局Vue.components(asyncComponent.name,asyncComponent)
+
+    一、元件库数据列表：
+    const libs = [{
+        title: "模块-机构表格",
+        icom: "",
+        type: "组件类型",
+        visible: true,
+        name: "module-table",
+        component: asyncComponent
+    }]
+
+    二、将元件的组件注册到全局Vue.components(lib.name,lib.component)
+
+    二、Element类: 
+    {
+        eleId:xxxxxxx,
+        elStyle:对应右侧编辑区域的公共样式（比如宽高、坐标）,
+        coName:要渲染的组件名字,
+        coType:组件类型, vue组件 | web component组件,
+        coProps:对应右侧编辑区域的组件props,
+        coEvents:对应右侧编辑区域的事件列表,
+        coMethods:对应右侧编辑区域的方法,
+        scripts:对应右侧编辑区域的脚本,
+
+        getStyle(){} 获取盒模型和坐标样式
+        ...其他方法
+    }
+
+    三、store舞台：
+    [
+        Element类,Element类,Element类
+    ]
+
+
+    编辑器添加逻辑:
+    1、当点击某一个元件时,将元件的组件创建vm实例,得到vm实例对象
+    2、将元件对象和vm.$options对象合并成一个对象,作为基础配置ele类选项
+    4、使用ele类选项实例化一个Element类,得到element实体,每个实体具备唯一eleId,使用eleId注册组件到全局
+    5、将element实体push到store舞台数组中
+
+
+    编辑器编辑逻辑:
+    1、点击某个element实体右边出现编辑区，可配置容器样式、props默认入参、等信息
+    2、拖拽时，实时同步组件容器的x、y、w、h位置信息到element实体中
+
+    编辑器预览逻辑:
+    1、调用parse解析器的组件逻辑
+
+    保存：
+    1、将store舞台数组中的Element类元素，生成json schema保存到服务器
+
+
+
+    parse解析器原理：
+    - 从后台接口拿到json schema数据。
+    - vue.component注册全部组件库。
+    - 创建一个解析器组件 <Work :work="work"></Work>
+    - Work组件处理：Work容器自身样式,根据viewIndex和views选项渲染WorkView组件
+    - WorkView组件处理：WorkView自身样式处理,渲染WorkViewComponent组件（此时会触发异步调用）
+    - WorkViewCompoent组件处理：渲染elements组件，处理prosp、容器坐标、stype样式、绑定事件、等等
