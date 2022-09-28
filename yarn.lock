@@ -17868,6 +17868,11 @@ uuid@^8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.npmmirror.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
+
 v8-compile-cache-lib@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz#6336e8d71965cb3d35a1bbb7868445a7c05264bf"
@@ -18086,6 +18091,14 @@ vue-i18n@^8.27.1:
   version "8.27.2"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.27.2.tgz#b649a65ff42b7d1a482679b732902f889965a068"
   integrity sha512-QVzn7u2WVH8F7eSKIM00lujC7x1mnuGPaTnDTmB01Hd709jDtB9kYtBqM+MWmp5AJRx3gnqAdZbee9MelqwFBg==
+
+vue-iframes@^0.0.20:
+  version "0.0.20"
+  resolved "https://registry.npmmirror.com/vue-iframes/-/vue-iframes-0.0.20.tgz#8a98b2c920ee71157e316bd610f10368d7cffb63"
+  integrity sha512-f8sdXNbCbzz17gJE7K6yZQ2uHml36DhD33KTxyQdn7GViDKJPs5kYA7wUsXVWxlt+XWlPM8VUr9M4ErKT2pIZw==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    uuid "^8.3.2"
 
 vue-inbrowser-compiler-independent-utils@^4.52.0:
   version "4.54.1"

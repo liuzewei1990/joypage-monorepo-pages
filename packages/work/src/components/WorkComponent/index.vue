@@ -8,9 +8,11 @@
 </template>
 
 <script>
+    import Vue from "vue";
     import { GridItem } from "vue-grid-layout";
+    import { Empty } from "ant-design-vue";
     export default {
-        components: { GridItem },
+        components: { GridItem, Empty },
         props: {
             workComponentItem: {
                 type: Object,
@@ -24,7 +26,8 @@
                 return this.workComponentItem.elStyle;
             },
             coName() {
-                return this.workComponentItem.coName;
+                let isComponent = Vue.component(this.workComponentItem.coName);
+                return isComponent ? this.workComponentItem.coName : "Empty";
             },
             coProps() {
                 return this.workComponentItem.coProps;

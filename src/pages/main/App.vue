@@ -1,18 +1,18 @@
 <template>
     <div id="app">
-        <p>我是一个子应用</p>
-        <HelloWorld></HelloWorld>
+        <HelloWorldVue />
     </div>
 </template>
 
 <script>
-    import HelloWorld from "./components/HelloWorld.vue";
+    import HelloWorldVue from "./components/HelloWorld.vue";
+
     export default {
-        components: { HelloWorld }
+        components: { HelloWorldVue }
     };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;

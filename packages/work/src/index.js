@@ -6,8 +6,8 @@ import WorkView from "./components/WorkView";
 import WorkLayout from "./components/WorkLayout";
 import WorkComponent from "./components/WorkComponent";
 
-import microApp from "@micro-zoe/micro-app";
-microApp.start();
+// import microApp from "@micro-zoe/micro-app";
+// microApp.start();
 
 const install = function (app) {
     // 注册arco-design组件库
