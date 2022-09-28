@@ -34,10 +34,6 @@
 
 <style lang="less" scoped>
     .work-view {
-        background: #f9f9f9;
-
-        .box {
-            background: #f3f3f3;
-        }
+        // background: #f9f9f9;
     }
 </style>

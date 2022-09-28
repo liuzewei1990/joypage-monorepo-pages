@@ -31,6 +31,6 @@
 <style lang="less" scoped>
     .work {
         position: relative;
-        background: #e3e3e3;
+        // background: #e3e3e3;
     }
 </style>

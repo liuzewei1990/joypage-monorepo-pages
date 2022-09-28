@@ -40,7 +40,8 @@
 
     .vue-grid-item:not(.vue-grid-placeholder) {
         // background: #f2f2f2;
-        // border: 1px solid black;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 5px;
         touch-action: none;
     }
     .vue-grid-item .resizing {

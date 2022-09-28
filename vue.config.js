@@ -107,6 +107,9 @@ const vueConfig = {
     },
 
     devServer: {
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        },
         // development server port 8000
         port: 8000
         // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
