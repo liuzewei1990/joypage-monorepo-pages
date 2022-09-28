@@ -79,8 +79,7 @@
             :columns="columns"
             :data="loadData"
             :alert="{ show: true, clear: true }"
-            :rowSelection="{ selectedRowKeys: this.selectedRowKeys, onChange: this.onSelectChange }"
-        >
+            :rowSelection="{ selectedRowKeys: this.selectedRowKeys, onChange: this.onSelectChange }">
             <template v-for="(col, index) in columns" v-if="col.scopedSlots" :slot="col.dataIndex" slot-scope="text, record">
                 <div :key="index">
                     <a-input v-if="record.editable" style="margin: -5px 0" :value="text" @change="(e) => handleChange(e.target.value, record.key, col, record)" />

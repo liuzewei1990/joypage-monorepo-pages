@@ -62,8 +62,7 @@
                     (form) => {
                         this.form = form;
                     }
-                "
-            >
+                ">
                 <a-form-item :labelCol="labelCol" :wrapperCol="wrapperCol" label="唯一识别码" hasFeedback validateStatus="success">
                     <a-input placeholder="唯一识别码" v-model="mdl.id" id="no" disabled="disabled" />
                 </a-form-item>

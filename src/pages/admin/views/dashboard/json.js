@@ -37,7 +37,7 @@ export default {
                     i: "30005",
                     elStyle: {},
                     coType: "vue",
-                    coName: "WebIframe",
+                    coName: "WebComponent",
                     coProps: { name: "app2", url: "http://localhost:8000/main/" },
                     coEvent: [],
                     coMethods: [],

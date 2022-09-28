@@ -92,8 +92,7 @@
                         :labelCol="labelCol"
                         :wrapperCol="wrapperCol"
                         :key="permission.permissionId"
-                        :label="permission.permissionName"
-                    >
+                        :label="permission.permissionName">
                         <a-checkbox>全选</a-checkbox>
                         <a-checkbox-group v-decorator="[`permissions.${permission.permissionId}`]" :options="permission.actionsOptions" />
                     </a-form-item>
