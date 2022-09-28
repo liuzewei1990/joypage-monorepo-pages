@@ -61,6 +61,7 @@ const vueConfig = {
 
     chainWebpack: (config) => {
         config.resolve.alias.set("@$", resolve("src"));
+        config.resolve.alias.set("@", resolve("node_modules/vpdsmart/src"));
 
         // const svgRule = config.module.rule('svg')
         // svgRule.uses.clear()

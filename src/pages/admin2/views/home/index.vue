@@ -1,9 +1,16 @@
 <template>
-    <div>home</div>
+    <div>
+        <work :work="json"></work>
+    </div>
 </template>
 
 <script>
-    export default {};
+    import json from "./json";
+    export default {
+        data() {
+            this.json = json;
+        }
+    };
 </script>
 
 <style lang="scss" scoped></style>
